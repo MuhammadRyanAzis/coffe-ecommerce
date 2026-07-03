@@ -415,3 +415,173 @@ footer {
     justify-content: center;
   }
 }
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-tertiary);
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-primary);
+}
+
+/* Preloader Overlay */
+.preloader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--bg-primary);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.preloader-overlay.fade-out {
+  opacity: 0;
+  transform: scale(1.05);
+  pointer-events: none;
+}
+
+.preloader-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Coffee Cup Animation */
+.coffee-cup-container {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.cup-icon-wrapper {
+  color: var(--accent-primary);
+  animation: cupPulse 2s ease-in-out infinite;
+}
+
+/* Steam animation */
+.steam-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 30px;
+  margin-bottom: 2px;
+}
+
+.steam-line {
+  width: 3px;
+  height: 15px;
+  background: linear-gradient(to top, var(--accent-primary), transparent);
+  border-radius: 3px;
+  animation: steamRise 1.8s infinite linear;
+  opacity: 0;
+}
+
+.steam-1 {
+  animation-delay: 0.2s;
+}
+
+.steam-2 {
+  animation-delay: 0.6s;
+}
+
+.steam-3 {
+  animation-delay: 0.4s;
+}
+
+@keyframes steamRise {
+  0% {
+    transform: translateY(0) scaleY(0.5);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-20px) scaleY(1.2);
+    opacity: 0;
+  }
+}
+
+@keyframes cupPulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 5px rgba(212, 163, 115, 0.2));
+  }
+  50% {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 15px rgba(212, 163, 115, 0.6));
+  }
+}
+
+.preloader-title {
+  font-size: 2.2rem;
+  font-family: var(--font-serif);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+
+.preloader-subtitle {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 2rem;
+}
+
+/* Progress bar container */
+.progress-container {
+  width: 240px;
+  height: 4px;
+  background: var(--bg-tertiary);
+  border-radius: 10px;
+  position: relative;
+  overflow: visible;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-hover));
+  border-radius: 10px;
+  box-shadow: 0 0 8px var(--accent-primary);
+  width: 0;
+  transition: width 0.05s linear;
+}
+
+.progress-text {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.8rem;
+  color: var(--accent-primary);
+  font-weight: 500;
+}
+
+/* Animation helpers */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
